@@ -1,10 +1,11 @@
 FROM devopsfaith/krakend:2.2.1
 
-# Copie o arquivo de configuração do KrakenD para o container
+# Instale o make (base Debian/Ubuntu)
+RUN apt-get update && apt-get install -y make && rm -rf /var/lib/apt/lists/*
+
+# Copie o arquivo de configuração do KrakenD
 COPY krakend.json /etc/krakend/krakend.json
 
-# Exponha a porta padrão do KrakenD
 EXPOSE 8080
 
-# Comando de inicialização do KrakenD
 ENTRYPOINT ["krakend", "run", "-c", "/etc/krakend/krakend.json"]
