@@ -1,31 +1,10 @@
-ARG GOLANG_VERSION
-ARG ALPINE_VERSION
-FROM golang:${GOLANG_VERSION}-alpine${ALPINE_VERSION} as builder
+FROM devopsfaith/krakend:2.2.1
 
-RUN apk --no-cache --virtual .build-deps add make gcc musl-dev binutils-gold
+# Copie o arquivo de configuração do KrakenD para o container
+COPY krakend.json /etc/krakend/krakend.json
 
-COPY . /app
-WORKDIR /app
+# Exponha a porta padrão do KrakenD
+EXPOSE 8080
 
-RUN make build
-
-
-FROM alpine:${ALPINE_VERSION}
-
-LABEL maintainer="community@krakend.io"
-
-RUN apk upgrade --no-cache --no-interactive && apk add --no-cache ca-certificates tzdata && \
-    adduser -u 1000 -S -D -H krakend && \
-    mkdir /etc/krakend && \
-    echo '{ "version": 3 }' > /etc/krakend/krakend.json
-
-COPY --from=builder /app/krakend /usr/bin/krakend
-
-USER 1000
-
-WORKDIR /etc/krakend
-
-ENTRYPOINT [ "/usr/bin/krakend" ]
-CMD [ "run", "-c", "/etc/krakend/krakend.json" ]
-
-EXPOSE 8000 8090
+# Comando de inicialização do KrakenD
+ENTRYPOINT ["krakend", "run", "-c", "/etc/krakend/krakend.json"]
