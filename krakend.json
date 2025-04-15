@@ -32,7 +32,7 @@
             "backend": [
                 {
                     "host": [
-                        "http://directus.railway.internal"
+                        "http://directus.railway.internal:3000"
                     ],
                     "url_pattern": "/items/pro_professionals",
                     "extra_config": {
