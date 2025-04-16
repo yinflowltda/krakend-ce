@@ -32,7 +32,7 @@
             "backend": [
                 {
                     "host": [
-                        "https://painel.yinflow.life"
+                        "http://directus.railway.internal:3000"
                     ],
                     "url_pattern": "/items"
                 }
