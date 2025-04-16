@@ -32,7 +32,7 @@
             "backend": [
                 {
                     "host": [
-                        "http://directus.railway.internal:3000"
+                        "http://directus.railway.internal:3000/items"
                     ],
                     "url_pattern": "/"
                 }
