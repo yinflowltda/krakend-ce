@@ -32,9 +32,9 @@
             "backend": [
                 {
                     "host": [
-                        "http://directus.railway.internal:3000"
+                        "https://viacep.com.br"
                     ],
-                    "url_pattern": "/items"
+                    "url_pattern": "/ws/01001000/json"
                 }
             ]
         }
