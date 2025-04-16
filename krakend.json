@@ -32,9 +32,9 @@
             "backend": [
                 {
                     "host": [
-                        "https://viacep.com.br"
+                        "https://painel.yinflow.life"
                     ],
-                    "url_pattern": "/ws/01001000/json"
+                    "url_pattern": "/items"
                 }
             ]
         }
