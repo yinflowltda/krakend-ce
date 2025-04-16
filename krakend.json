@@ -26,22 +26,15 @@
     },
     "endpoints": [
         {
-            "endpoint": "/items/pro_professionals",
+            "endpoint": "/",
             "method": "GET",
             "output_encoding": "json",
             "backend": [
                 {
                     "host": [
-                        "http://directus.railway.internal:3000"
+                        "http://directus.railway.internal"
                     ],
-                    "url_pattern": "/items/pro_professionals",
-                    "extra_config": {
-                        "proxy": {
-                            "headers": {
-                                "Authorization": "{{ env DIRECTUS_API_KEY }}"
-                            }
-                        }
-                    }
+                    "url_pattern": "/"
                 }
             ]
         }
