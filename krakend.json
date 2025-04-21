@@ -6,7 +6,11 @@
     "cache_ttl": "3600s",
     "use_h2c": true,
     "timeout": "5s",
-    "disable_keep_alives": false,
+    "client_tls": {
+        "allow_insecure_connections": false,
+        "disable_system_ca_pool": false,
+        "min_version": "TLS12"
+    },
     "extra_config": {
         "router": {
             "return_error_msg": true
