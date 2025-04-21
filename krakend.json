@@ -6,6 +6,7 @@
     "cache_ttl": "3600s",
     "use_h2c": true,
     "timeout": "5s",
+    "disable_keep_alives": false,
     "extra_config": {
         "router": {
             "return_error_msg": true
@@ -34,7 +35,7 @@
                     "host": [
                         "http://directus.railway.internal:3000"
                     ],
-                    "url_pattern": "/items"
+                    "url_pattern": "/items/pro_professional"
                 }
             ]
         }
