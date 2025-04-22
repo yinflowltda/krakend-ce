@@ -27,7 +27,7 @@
     },
     "endpoints": [
         {
-            "endpoint": "/items/pro_professionals",
+            "endpoint": "/items/${TESTE}",
             "method": "GET",
             "input_headers": [
                 "Authorization"
@@ -36,16 +36,9 @@
             "backend": [
                 {
                     "host": [
-                        "https://painel.yinflow.life"
+                        "http://directus.railway.internal:3000"
                     ],
-                    "url_pattern": "/items/pro_professionals",
-                    "extra_config": {
-                        "proxy": {
-                            "static_headers": {
-                                "Authorization": "Bearer ${BEARER_TOKEN}"
-                            }
-                        }
-                    }
+                    "url_pattern": "/items/pro_professionals"
                 }
             ]
         }
