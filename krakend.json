@@ -6,11 +6,6 @@
     "cache_ttl": "3600s",
     "use_h2c": true,
     "timeout": "5s",
-    "client_tls": {
-        "allow_insecure_connections": false,
-        "disable_system_ca_pool": false,
-        "min_version": "TLS12"
-    },
     "extra_config": {
         "router": {
             "return_error_msg": true
@@ -27,6 +22,9 @@
                 "Content-Type",
                 "Authorization"
             ]
+        },
+        "plugin/http-client": {
+            "name": "NewHTTP2Client"
         }
     },
     "endpoints": [
@@ -37,9 +35,9 @@
             "backend": [
                 {
                     "host": [
-                        "http://directus.railway.internal:3000"
+                        "https://painel.yinflow.life"
                     ],
-                    "url_pattern": "/items/pro_professional"
+                    "url_pattern": "/server/health"
                 }
             ]
         }
