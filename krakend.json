@@ -27,7 +27,7 @@
     },
     "endpoints": [
         {
-            "endpoint": "/",
+            "endpoint": "/items/pro_professionals",
             "method": "GET",
             "input_headers": [
                 "Authorization"
