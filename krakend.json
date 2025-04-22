@@ -38,7 +38,7 @@
                     "host": [
                         "https://painel.yinflow.life"
                     ],
-                    "url_pattern": "/server/health "
+                    "url_pattern": "/server/health"
                 }
             ]
         }
