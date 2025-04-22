@@ -6,6 +6,7 @@
     "cache_ttl": "3600s",
     "use_h2c": true,
     "timeout": "5s",
+    "disable_keep_alives": true,
     "extra_config": {
         "router": {
             "return_error_msg": true
@@ -37,7 +38,7 @@
                     "host": [
                         "https://painel.yinflow.life"
                     ],
-                    "url_pattern": "/server/health"
+                    "url_pattern": "/server/health "
                 }
             ]
         }
