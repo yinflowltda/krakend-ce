@@ -23,22 +23,22 @@
                 "Content-Type",
                 "Authorization"
             ]
-        },
-        "plugin/http-client": {
-            "name": "NewHTTP2Client"
         }
     },
     "endpoints": [
         {
             "endpoint": "/",
             "method": "GET",
+            "input_headers": [
+                "Authorization"
+            ],
             "output_encoding": "json",
             "backend": [
                 {
                     "host": [
                         "http://directus.railway.internal:3000"
                     ],
-                    "url_pattern": "/server/health"
+                    "url_pattern": "/items/pro_professionals"
                 }
             ]
         }
