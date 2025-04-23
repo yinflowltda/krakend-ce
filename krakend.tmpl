@@ -3,7 +3,6 @@
   "version": 3,
   "name": "Yinflow Gateway",
   "port": 8080,
-	"default_host": "http://directus.railway.internal:3000",
 	"timeout": "3s",
 	"cache_ttl": "3s",
 	"output_encoding": "json",
@@ -27,6 +26,9 @@
       "endpoint": "/items/pro_professionals",
       "backend": [
           {
+            hosts: [
+              "http://directus.railway.internal:3000"
+            ],
             "url_pattern": "/items/pro_professionals",
             "extra_config": {
                 "modifier/martian": {
