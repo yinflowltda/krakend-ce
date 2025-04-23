@@ -27,7 +27,7 @@
             ]
         },
         "modifier/lua-endpoint": {
-            "pre": "local c = ctx.load(); print(c:headers('X-API-KEY') == {{ env "KRAKEND_API_KEY" }});"
+            "pre": "local c = ctx.load(); return c:headers('X-API-KEY') == {{ env "KRAKEND_API_KEY" }};"
         }
     },
     "endpoints": [
