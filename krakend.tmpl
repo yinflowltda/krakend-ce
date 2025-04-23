@@ -18,7 +18,8 @@
             ],
             "allow_headers": [
                 "Content-Type",
-                "Authorization"
+                "Authorization",
+                "X-API-KEY"
             ]
         }
     },
@@ -29,6 +30,11 @@
           "input_headers": [
               "Authorization"
           ],
+          "extra_config": {
+            "modifier/lua-endpoint": {
+              "pre": "local key = request.headers['X-API-KEY']; return key == '{{ env "KRAKEND_API_KEY" }}'"
+            }
+          },
           "backend": [
               {
                   "host": [
