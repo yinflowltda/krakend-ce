@@ -3,6 +3,10 @@ FROM devopsfaith/krakend:2.2.1
 ENV FC_ENABLE=1
 ENV FC_OUT=krakend.json
 
+ARG DIRECTUS_BASE_URL
+ENV DIRECTUS_BASE_URL "$DIRECTUS_BASE_URL"
+RUN echo "DIRECTUS_BASE_URL: $DIRECTUS_BASE_URL"
+
 COPY . /etc/krakend/
 
 WORKDIR /etc/krakend
