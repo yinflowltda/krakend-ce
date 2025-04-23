@@ -7,6 +7,10 @@
     "use_h2c": true,
     "timeout": "5s",
     "output_encoding": "json",
+    "input_headers": [
+      "Authorization",
+      "X-API-KEY"
+    ],
     "extra_config": {
         "security/cors": {
             "allow_origins": [
@@ -23,34 +27,19 @@
             ]
         },
         "modifier/lua-endpoint": {
-            "pre": "local r = request.load(); print(r:headers('X-API-KEY'))"
+            "pre": "local c = ctx.load(); c:headers('Authorization', 'Bearer {{ env "DIRECTUS_API_KEY" }}');"
         }
     },
     "endpoints": [
       {
           "endpoint": "/items/pro_professionals",
           "method": "GET",
-          "input_headers": [
-              "Authorization",
-              "X-API-KEY"
-          ],
           "backend": [
               {
                   "host": [
                       "{{ env "DIRECTUS_BASE_URL" }}"
                   ],
-                  "url_pattern": "/items/pro_professionals",
-                  "extra_config": {
-                    "modifier/martian": {
-                      "header.Append": {
-                        "scope": [
-                          "request", "response"
-                        ],
-                        "name": "Authorization",
-                        "value": "Bearer {{ env "DIRECTUS_API_KEY" }}"
-                      }
-                    }
-                  }
+                  "url_pattern": "/items/pro_professionals"
               }
           ]
       }
