@@ -1,8 +1,12 @@
 FROM devopsfaith/krakend:2.2.1
 
+ENV FC_ENABLE=1
+ENV FC_OUT=krakend.json
 
-# Copie o arquivo de configuração do KrakenD
-COPY krakend.json /etc/krakend/krakend.json
+COPY . /etc/krakend/
+
+WORKDIR /etc/krakend
+RUN krakend check -tdc krakend.tmpl
 
 EXPOSE 8080
 

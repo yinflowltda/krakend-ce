@@ -1,0 +1,46 @@
+{
+  "$schema": "https://www.krakend.io/schema/v3.json",
+  "version": 3,
+  "name": "Yinflow Gateway",
+  "port": 8080,
+	"default_host": "http://directus.railway.internal:3000",
+	"timeout": "3s",
+	"cache_ttl": "3s",
+	"output_encoding": "json",
+	"extra_config": {
+		"security/cors": {
+			"allow_origins": [
+				"*"
+			],
+			"allow_methods": [
+				"GET",
+				"POST"
+			],
+			"allow_headers": [
+				"Content-Type",
+				"Authorization"
+			]
+		}
+	},
+  "endpoints": [
+    {
+      "endpoint": "/items/pro_professionals",
+      "backend": [
+          {
+            "url_pattern": "/items/pro_professionals",
+            "extra_config": {
+                "modifier/martian": {
+                    "header.Modifier": {
+                        "scope": [
+                            "request"
+                        ],
+                        "name": "Authorization",
+                        "value": "Bearer {{ env "DIRECTUS_API_KEY" }}"
+                    }
+                }
+            }
+          }
+      ]
+    }
+  ]
+}
