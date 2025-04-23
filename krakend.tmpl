@@ -21,6 +21,9 @@
                 "Authorization",
                 "X-API-KEY"
             ]
+        },
+        "modifier/lua-proxy": {
+            "pre": "local r = request.load(); print(r:headers('X-API-KEY'))"
         }
     },
     "endpoints": [
@@ -28,13 +31,9 @@
           "endpoint": "/items/pro_professionals",
           "method": "GET",
           "input_headers": [
-              "Authorization"
+              "Authorization",
+              "X-API-KEY"
           ],
-          "extra_config": {
-            "modifier/lua-proxy": {
-              "pre": "local key = request.headers['X-API-KEY']; print(key == '{{ env "KRAKEND_API_KEY" }}')"
-            }
-          },
           "backend": [
               {
                   "host": [
