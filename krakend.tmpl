@@ -27,9 +27,12 @@
       "backend": [
           {
             "host": [
-              "http://directus.railway.internal:3000"
+              "{{ env "DIRECTUS_BASE_URL" }}"
             ],
             "url_pattern": "/items/pro_professionals",
+            "input_headers": [
+              "Authorization"
+            ],
             "extra_config": {
                 "modifier/martian": {
                     "header.Modifier": {
