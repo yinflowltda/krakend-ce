@@ -6,11 +6,8 @@
     "cache_ttl": "3600s",
     "use_h2c": true,
     "timeout": "5s",
-    "disable_keep_alives": true,
+    "output_encoding": "json",
     "extra_config": {
-        "router": {
-            "return_error_msg": true
-        },
         "security/cors": {
             "allow_origins": [
                 "*"
@@ -26,21 +23,20 @@
         }
     },
     "endpoints": [
-        {
-            "endpoint": "/items/pro_professionals",
-            "method": "GET",
-            "input_headers": [
-                "Authorization"
-            ],
-            "output_encoding": "json",
-            "backend": [
-                {
-                    "host": [
-                        "http://directus.railway.internal:3000"
-                    ],
-                    "url_pattern": "/items/pro_professionals"
-                }
-            ]
-        }
-    ]
+      {
+          "endpoint": "/items/pro_professionals",
+          "method": "GET",
+          "input_headers": [
+              "Authorization"
+          ],
+          "backend": [
+              {
+                  "host": [
+                      "{{ env "DIRECTUS_BASE_URL" }}"
+                  ],
+                  "url_pattern": "/items/pro_professionals"
+              }
+          ]
+      }
+  ]
 }
