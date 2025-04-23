@@ -31,8 +31,8 @@
               "Authorization"
           ],
           "extra_config": {
-            "modifier/lua-endpoint": {
-              "pre": "local key = request.headers['X-API-KEY']; return key == '{{ env "KRAKEND_API_KEY" }}'"
+            "modifier/lua-proxy": {
+              "pre": "print('Hi from pre!'); print('{{ env "KRAKEND_API_KEY" }}')"
             }
           },
           "backend": [
