@@ -27,7 +27,7 @@
             ]
         },
         "modifier/lua-endpoint": {
-            "pre": "local c = ctx.load(); c:headers('Authorization', 'Bearer {{ env "DIRECTUS_API_KEY" }}');"
+            "pre": "local c = ctx.load(); c:headers('teste', 'Bearer {{ env "DIRECTUS_API_KEY" }}');"
         }
     },
     "endpoints": [
@@ -39,7 +39,18 @@
                   "host": [
                       "{{ env "DIRECTUS_BASE_URL" }}"
                   ],
-                  "url_pattern": "/items/pro_professionals"
+                  "url_pattern": "/items/pro_professionals",
+                  "extra_config": {
+                    "modifier/martian": {
+                      "header.Append": {
+                        "scope": [
+                          "request", "response"
+                        ],
+                        "name": "Authorization",
+                        "value": "Bearer {{ env "DIRECTUS_API_KEY" }}"
+                      }
+                    }
+                  }
               }
           ]
       }
