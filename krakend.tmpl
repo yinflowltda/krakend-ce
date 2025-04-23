@@ -27,7 +27,7 @@
             ]
         },
         "modifier/lua-endpoint": {
-            "pre": "local c = ctx.load(); c:headers('teste', 'Bearer {{ env "DIRECTUS_API_KEY" }}');"
+            "pre": "local c = ctx.load(); c:headers('Accept');"
         }
     },
     "endpoints": [
