@@ -30,7 +30,7 @@
             ]
         },
         "modifier/lua-endpoint": {
-            "pre": "local c = ctx.load(); local x_api_key = c:headers('X-API-KEY'); print(x_api_key ~= '{{ env "KRAKEND_API_KEY" }}');"
+            "pre": "local c = ctx.load(); local x_api_key = c:headers('X-API-KEY'); if x_api_key ~= '{{ env "KRAKEND_API_KEY" }}' then kraken.response.error("Token inválido", 401) end;"
         }
     },
     "endpoints": [
