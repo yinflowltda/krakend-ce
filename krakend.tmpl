@@ -31,7 +31,7 @@
             ]
         },
         "modifier/lua-proxy": {
-            "post": "local r = response.load(); r:headers('Authorization', '{{ env "" }}');"
+            "pre": "local c = ctx.load(); print(c:headers('Authorization') == 'Bearer {{ env "KRAKEND_API_KEY" }}');"
         }
     },
     "endpoints": [
