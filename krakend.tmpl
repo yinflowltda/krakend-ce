@@ -31,7 +31,7 @@
             ]
         }, 
         "modifier/lua-endpoint": {
-            "pre": "local c = ctx.load(); print(c:headers('Authorization') == 'Bearer {{ env "KRAKEND_API_KEY" }}');"
+            "pre": "local c = ctx.load(); if c:headers('Authorization') ~= 'Bearer {{ env "KRAKEND_API_KEY" }}' then error('Token inválido!') end;"
         },
         "qos/circuit-breaker": {
           "interval": "60s",
