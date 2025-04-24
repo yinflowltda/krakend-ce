@@ -38,8 +38,9 @@
           "timeout": "10s",
           "maxErrors": 5
         },
-        "ratelimit/endpoint": {
+        "qos/ratelimit/router": {
           "clientMaxRate": 3,
+          "every": "1s",
           "strategy": "ip",
           "burst": 3
         }
