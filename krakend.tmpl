@@ -29,7 +29,7 @@
                 "X-API-KEY"
             ]
         },
-        "modifier/lua-endpoint": {
+        "modifier/lua-proxy": {
             "pre": "local c = ctx.load(); local x_api_key = c:headers('X-API-KEY'); if x_api_key == '{{ env "KRAKEND_API_KEY" }}' then c:headers('Authorization', 'Bearer {{ env "DIRECTUS_API_KEY" }}') end;"
         }
     },
@@ -40,6 +40,46 @@
           "backend": [
               {
                   "url_pattern": "/items/pro_professionals",
+                  "extra_config": {
+                    "modifier/martian": {
+                      "header.Append": {
+                        "scope": [
+                          "request", "response"
+                        ],
+                        "name": "Authorization",
+                        "value": "Bearer {{ env "DIRECTUS_API_KEY" }}"
+                      }
+                    }
+                  }
+              }
+          ]
+      },
+      {
+          "endpoint": "/items/pro_professional_companies",
+          "method": "GET",
+          "backend": [
+              {
+                  "url_pattern": "/items/pro_professional_companies",
+                  "extra_config": {
+                    "modifier/martian": {
+                      "header.Append": {
+                        "scope": [
+                          "request", "response"
+                        ],
+                        "name": "Authorization",
+                        "value": "Bearer {{ env "DIRECTUS_API_KEY" }}"
+                      }
+                    }
+                  }
+              }
+          ]
+      },
+      {
+          "endpoint": "/flows/trigger/8f80566e-c262-40f1-a47e-bac429bdbf11",
+          "method": "POST",
+          "backend": [
+              {
+                  "url_pattern": "/flows/trigger/8f80566e-c262-40f1-a47e-bac429bdbf11",
                   "extra_config": {
                     "modifier/martian": {
                       "header.Append": {
