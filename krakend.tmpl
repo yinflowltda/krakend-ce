@@ -11,8 +11,7 @@
       "{{ env "DIRECTUS_BASE_URL" }}"
     ],
     "input_headers": [
-      "Authorization",
-      "X-API-KEY"
+      "Authorization"
     ],
     "extra_config": {
         "security/cors": {
@@ -30,7 +29,8 @@
             ]
         },
         "modifier/lua-endpoint": {
-            "pre": "local c = ctx.load(); local x_api_key = c:headers('X-API-KEY'); if x_api_key == '{{ env "KRAKEND_API_KEY" }}' then c:headers('Authorization', 'Bearer {{ env "DIRECTUS_API_KEY" }}') end;"
+            "pre": "local r = request.load(); r:headers('Authorization', '');",
+            "post": "local r = response.load(); r:headers('Authorization', '');"
         }
     },
     "endpoints": [
