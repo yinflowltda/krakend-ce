@@ -29,9 +29,19 @@
                 "Authorization",
                 "X-API-KEY"
             ]
-        },
+        }, 
         "modifier/lua-proxy": {
             "pre": "local c = ctx.load(); print(c:headers('Authorization') == 'Bearer {{ env "KRAKEND_API_KEY" }}');"
+        },
+        "qos/circuit-breaker": {
+          "interval": "60s",
+          "timeout": "10s",
+          "maxErrors": 5
+        },
+        "ratelimit/endpoint": {
+          "clientMaxRate": 3,
+          "strategy": "ip",
+          "burst": 3
         }
     },
     "endpoints": [
