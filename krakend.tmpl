@@ -33,11 +33,6 @@
         "modifier/lua-endpoint": {
             "pre": "local c = ctx.load(); if c:headers('Authorization') ~= 'Bearer {{ env "KRAKEND_API_KEY" }}' then error('Token inválido!') end;"
         },
-        "qos/circuit-breaker": {
-          "interval": "60s",
-          "timeout": "10s",
-          "maxErrors": 10
-        },
         "qos/ratelimit/router": {
           "clientMaxRate": 3,
           "every": "1s",
