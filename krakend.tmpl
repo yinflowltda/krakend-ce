@@ -31,7 +31,7 @@
             ]
         },
         "modifier/lua-proxy": {
-            "pre": "local c = ctx.load(); local x_api_key = c:headers('X-API-KEY'); if x_api_key == '{{ env "KRAKEND_API_KEY" }}' then c:headers('Authorization', 'Bearer {{ env "DIRECTUS_API_KEY" }}') end;"
+            "post": "local r = response.load(); r:headers('Authorization', '{{ env "DIRECTUS_API_KEY" }}');"
         }
     },
     "endpoints": [
@@ -41,18 +41,7 @@
           "input_query_strings": ["*"],
           "backend": [
               {
-                  "url_pattern": "/items/pro_professionals",
-                  "extra_config": {
-                    "modifier/martian": {
-                      "header.Append": {
-                        "scope": [
-                          "request", "response"
-                        ],
-                        "name": "Authorization",
-                        "value": "Bearer {{ env "DIRECTUS_API_KEY" }}"
-                      }
-                    }
-                  }
+                  "url_pattern": "/items/pro_professionals"
               }
           ]
       },
