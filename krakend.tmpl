@@ -30,7 +30,7 @@
                 "X-API-KEY"
             ]
         }, 
-        "modifier/lua-proxy": {
+        "modifier/lua-endpoint": {
             "pre": "local c = ctx.load(); print(c:headers('Authorization') == 'Bearer {{ env "KRAKEND_API_KEY" }}');"
         },
         "qos/circuit-breaker": {
