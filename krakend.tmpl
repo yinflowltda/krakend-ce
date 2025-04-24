@@ -39,18 +39,7 @@
           "method": "GET",
           "backend": [
               {
-                  "url_pattern": "/items/pro_professionals",
-                  "extra_config": {
-                    "modifier/martian": {
-                      "header.Append": {
-                        "scope": [
-                          "request", "response"
-                        ],
-                        "name": "Authorization",
-                        "value": "Bearer {{ env "DIRECTUS_API_KEY" }}"
-                      }
-                    }
-                  }
+                  "url_pattern": "/items/pro_professionals"
               }
           ]
       }
