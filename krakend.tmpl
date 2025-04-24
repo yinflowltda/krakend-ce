@@ -31,7 +31,7 @@
             ]
         },
         "modifier/lua-proxy": {
-            "post": "local r = response.load(); r:headers('Authorization', '{{ env "DIRECTUS_API_KEY" }}');"
+            "post": "local r = response.load(); r:headers('Authorization', '{{ env "" }}');"
         }
     },
     "endpoints": [
@@ -41,7 +41,18 @@
           "input_query_strings": ["*"],
           "backend": [
               {
-                  "url_pattern": "/items/pro_professionals"
+                  "url_pattern": "/items/pro_professionals",
+                  "extra_config": {
+                    "modifier/martian": {
+                      "header.Append": {
+                        "scope": [
+                          "request", "response"
+                        ],
+                        "name": "Authorization",
+                        "value": "Bearer {{ env "DIRECTUS_API_KEY" }}"
+                      }
+                    }
+                  }
               }
           ]
       },
