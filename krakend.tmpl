@@ -164,26 +164,6 @@
           ]
       },
       {
-          "endpoint": "/flows/trigger/b050f271-e7e6-4020-82a3-1e10b7432bf1",
-          "method": "POST",
-          "backend": [
-              {
-                  "url_pattern": "/flows/trigger/b050f271-e7e6-4020-82a3-1e10b7432bf1",
-                  "extra_config": {
-                    "modifier/martian": {
-                      "header.Append": {
-                        "scope": [
-                          "request", "response"
-                        ],
-                        "name": "Authorization",
-                        "value": "Bearer {{ env "DIRECTUS_API_KEY" }}"
-                      }
-                    }
-                  }
-              }
-          ]
-      },
-      {
           "endpoint": "/flows/trigger/69564feb-e8a0-4798-b7c4-5eaba8d10d74",
           "method": "POST",
           "backend": [
