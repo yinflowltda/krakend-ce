@@ -304,26 +304,6 @@
           ]
       },
       {
-          "endpoint": "/flows/trigger/255e5e47-cf7d-4e19-8e1d-67895419b5a5",
-          "method": "POST",
-          "backend": [
-              {
-                  "url_pattern": "/flows/trigger/255e5e47-cf7d-4e19-8e1d-67895419b5a5",
-                  "extra_config": {
-                    "modifier/martian": {
-                      "header.Append": {
-                        "scope": [
-                          "request", "response"
-                        ],
-                        "name": "Authorization",
-                        "value": "Bearer {{ env "DIRECTUS_API_KEY" }}"
-                      }
-                    }
-                  }
-              }
-          ]
-      },
-      {
           "endpoint": "/files",
           "method": "POST",
           "backend": [
