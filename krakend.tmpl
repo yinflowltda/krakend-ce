@@ -345,6 +345,29 @@
           ]
       },
       {
+          "endpoint": "/flows/trigger/01fb4c47-f398-4c78-b466-068f2664d0cc",
+          "method": "POST",
+          "host": [
+            "{{ env "YINAI_BASE_URL" }}"
+          ],
+          "backend": [
+              {
+                  "url_pattern": "/flows/trigger/01fb4c47-f398-4c78-b466-068f2664d0cc",
+                  "extra_config": {
+                    "modifier/martian": {
+                      "header.Append": {
+                        "scope": [
+                          "request", "response"
+                        ],
+                        "name": "Authorization",
+                        "value": "Bearer {{ env "YINAI_API_KEY" }}"
+                      }
+                    }
+                  }
+              }
+          ]
+      },
+      {
           "endpoint": "/flows/trigger/efd5f28d-de24-4b67-853e-0ff3257ae091",
           "method": "POST",
           "host": [
