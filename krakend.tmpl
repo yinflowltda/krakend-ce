@@ -450,19 +450,9 @@
                   "encoding": "no-op"
               },
               {
-                  "url_pattern": "/flows/trigger/0a98ee78-074c-4c3b-910a-fac1c574f06f",
-                  "encoding": "json",
-                  "extra_config": {
-                    "modifier/martian": {
-                      "header.Append": {
-                        "scope": [
-                          "request", "response"
-                        ],
-                        "name": "Authorization",
-                        "value": "Bearer {{ env "DIRECTUS_API_KEY" }}"
-                      }
-                    }
-                  }
+                  "host": [ "https://viacep.com.br" ],
+                  "url_pattern": "/ws/01001000/json/",
+                  "encoding": "json"
               }
           ]
       }
