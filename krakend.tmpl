@@ -10,10 +10,6 @@
     "host": [ 
       "{{ env "DIRECTUS_BASE_URL" }}"
     ],
-    "input_headers": [
-      "Authorization",
-      "Content-Type"
-    ],
     "extra_config": {
         "security/cors": {
             "allow_origins": [
@@ -30,12 +26,6 @@
         }, 
         "modifier/lua-endpoint": {
             "pre": "local c = ctx.load(); if c:headers('Authorization') ~= 'Bearer {{ env "KRAKEND_API_KEY" }}' then error('Token inválido!') end;"
-        },
-        "qos/ratelimit/router": {
-          "clientMaxRate": 3,
-          "every": "1s",
-          "strategy": "ip",
-          "burst": 3
         }
     },
     "endpoints": [
@@ -384,11 +374,9 @@
       {
           "endpoint": "/flows/trigger/dcf15d86-3806-4bf4-8150-daffb50b698f",
           "method": "POST",
-          "host": [
-            "{{ env "YINAI_BASE_URL" }}"
-          ],
           "backend": [
               {
+                  "host": [ "{{ env "YINAI_BASE_URL" }}" ],
                   "url_pattern": "/flows/trigger/dcf15d86-3806-4bf4-8150-daffb50b698f",
                   "extra_config": {
                     "modifier/martian": {
@@ -407,11 +395,9 @@
       {
           "endpoint": "/flows/trigger/01fb4c47-f398-4c78-b466-068f2664d0cc",
           "method": "POST",
-          "host": [
-            "{{ env "YINAI_BASE_URL" }}"
-          ],
           "backend": [
               {
+                  "host": [ "{{ env "YINAI_BASE_URL" }}" ],
                   "url_pattern": "/flows/trigger/01fb4c47-f398-4c78-b466-068f2664d0cc",
                   "extra_config": {
                     "modifier/martian": {
@@ -430,11 +416,9 @@
       {
           "endpoint": "/flows/trigger/efd5f28d-de24-4b67-853e-0ff3257ae091",
           "method": "POST",
-          "host": [
-            "{{ env "YINAI_BASE_URL" }}"
-          ],
           "backend": [
               {
+                  "host": [ "{{ env "YINAI_BASE_URL" }}" ],
                   "url_pattern": "/flows/trigger/efd5f28d-de24-4b67-853e-0ff3257ae091",
                   "extra_config": {
                     "modifier/martian": {
