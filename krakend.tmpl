@@ -461,10 +461,6 @@
                         "name": "Authorization",
                         "value": "Bearer {{ env "DIRECTUS_API_KEY" }}"
                       }
-                    },
-                    "modifier/lua-backend": {
-                      "allow_open_libs": true,
-                      "pre": "local req = request.load(); req:body(req:params(Resp0))"
                     }
                   }
               }
