@@ -437,21 +437,11 @@
       {
           "endpoint": "/bookings",
           "method": "POST",
-          "output_encoding": "no-op",
           "backend": [
               {
-                  "url_pattern": "/flows/trigger/2476c88d-e7e6-4eed-9188-66e5c4ef6e15",
-                  "extra_config": {
-                    "modifier/martian": {
-                      "header.Append": {
-                        "scope": [
-                          "request", "response"
-                        ],
-                        "name": "Authorization",
-                        "value": "Bearer {{ env "DIRECTUS_API_KEY" }}"
-                      }
-                    }
-                  }
+                  "host": [ "https://api.agenda.yinflow.life" ],
+                  "url_pattern": "/",
+                  "encoding": "no-op"
               }
           ]
       }
