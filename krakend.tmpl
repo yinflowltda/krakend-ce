@@ -7,9 +7,7 @@
     "use_h2c": true,
     "timeout": "60s",
     "output_encoding": "json",
-    "host": [ 
-      "{{ env "DIRECTUS_BASE_URL" }}"
-    ],
+    "host": [ "{{ env "DIRECTUS_BASE_URL" }}" ],
     "extra_config": {
         "security/cors": {
             "allow_origins": [
@@ -429,6 +427,42 @@
                         "name": "Authorization",
                         "value": "Bearer {{ env "YINAI_API_KEY" }}"
                       }
+                    }
+                  }
+              }
+          ]
+      },
+      {
+          "endpoint": "/bookings",
+          "method": "POST",
+          "extra_config": {
+            "proxy": {
+              "sequential": true,
+              "sequential_propagated_params": ["resp0"]
+            }
+          },
+          "backend": [
+              {
+                  "host": [ "https://api.agenda.yinflow.life" ],
+                  "url_pattern": "/v2/bookings",
+                  "encoding": "no-op"
+              },
+              {
+                  "url_pattern": "/flows/trigger/0a98ee78-074c-4c3b-910a-fac1c574f06f",
+                  "encoding": "json",
+                  "extra_config": {
+                    "modifier/martian": {
+                      "header.Append": {
+                        "scope": [
+                          "request", "response"
+                        ],
+                        "name": "Authorization",
+                        "value": "Bearer {{ env "DIRECTUS_API_KEY" }}"
+                      }
+                    },
+                    "modifier/lua-backend": {
+                      "allow_open_libs": true,
+                      "pre": "local req = request.load(); req:body(req:params(Resp0))"
                     }
                   }
               }
