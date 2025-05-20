@@ -436,12 +436,12 @@
       },
       {
           "endpoint": "/bookings",
-          "method": "GET",
+          "method": "POST",
           "backend": [
               {
                   "host": [ "https://api.agenda.yinflow.life" ],
-                  "url_pattern": "/",
-                  "encoding": "no-op"
+                  "url_pattern": "/v2/bookings",
+                  "encoding": "json"
               }
           ]
       }
