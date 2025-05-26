@@ -11,7 +11,7 @@
     "extra_config": {
         "security/cors": {
             "allow_origins": [
-                "https://yinflow.life"
+                "*"
             ],
             "allow_methods": [
                 "GET",
@@ -23,7 +23,7 @@
             ]
         }, 
         "modifier/lua-endpoint": {
-            "pre": "local c = ctx.load(); if c:headers('Authorization') ~= 'Bearer {{ env "KRAKEND_API_KEY" }}' then error('Token inválido!') end;"
+            "pre": "local c = ctx.load(); if c:headers('Authorization') ~= 'Bearer {{ env "KRAKEND_API_KEY" }}' then error('Invalid Token!') end; if c:headers('Referer') ~= 'https://yinflow.life/' then error('Invalid Origin!') end;"
         }
     },
     "endpoints": [
