@@ -23,7 +23,7 @@
             ]
         }, 
         "modifier/lua-endpoint": {
-            "pre": "local c = ctx.load(); if c:headers('Authorization') ~= 'Bearer {{ env "KRAKEND_API_KEY" }}' then error('Invalid Token!') end; if c:headers('Referer') ~= 'https://yinflow.life/' then error('Invalid Origin!') end;"
+            "pre": "local c = ctx.load(); if c:headers('Authorization') ~= 'Bearer {{ env "KRAKEND_API_KEY" }}' then error('Invalid Token!') end;"
         }
     },
     "endpoints": [
