@@ -90,6 +90,26 @@
           ]
       },
       {
+          "endpoint": "/flows/trigger/81d2e9ef-a62d-417d-b96a-43cf6b06933b",
+          "method": "POST",
+          "backend": [
+              {
+                  "url_pattern": "/flows/trigger/81d2e9ef-a62d-417d-b96a-43cf6b06933b",
+                  "extra_config": {
+                    "modifier/martian": {
+                      "header.Append": {
+                        "scope": [
+                          "request", "response"
+                        ],
+                        "name": "Authorization",
+                        "value": "Bearer {{ env "DIRECTUS_API_KEY" }}"
+                      }
+                    }
+                  }
+              }
+          ]
+      },
+      {
           "endpoint": "/flows/trigger/5316688e-4e21-43e7-a9a2-47a00c1e19b8",
           "method": "POST",
           "backend": [
