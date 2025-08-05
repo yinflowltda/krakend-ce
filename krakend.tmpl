@@ -70,6 +70,26 @@
           ]
       },
       {
+          "endpoint": "/items/pro_professional/{id}",
+          "method": "PATCH",
+          "backend": [
+              {
+                  "url_pattern": "/items/pro_professional/{id}",
+                  "extra_config": {
+                    "modifier/martian": {
+                      "header.Append": {
+                        "scope": [
+                          "request", "response"
+                        ],
+                        "name": "Authorization",
+                        "value": "Bearer {{ env "DIRECTUS_API_KEY" }}"
+                      }
+                    }
+                  }
+              }
+          ]
+      },
+      {
           "endpoint": "/flows/trigger/8f80566e-c262-40f1-a47e-bac429bdbf11",
           "method": "POST",
           "backend": [
