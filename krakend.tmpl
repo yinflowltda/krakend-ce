@@ -237,6 +237,26 @@
           ]
       },
       {
+          "endpoint": "/users",
+          "method": "GET",
+          "backend": [
+              {
+                  "url_pattern": "/users",
+                  "extra_config": {
+                    "modifier/martian": {
+                      "header.Append": {
+                        "scope": [
+                          "request", "response"
+                        ],
+                        "name": "Authorization",
+                        "value": "Bearer {{ env "DIRECTUS_API_KEY" }}"
+                      }
+                    }
+                  }
+              }
+          ]
+      },
+      {
           "endpoint": "/flows/trigger/f682a837-e2b2-452c-91ff-f3e7933bbe57",
           "method": "POST",
           "backend": [
