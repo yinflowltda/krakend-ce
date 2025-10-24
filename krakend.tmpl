@@ -326,6 +326,16 @@
           ]
       },
       {
+          "endpoint": "/bookings/{bookingUid}/reschedule",
+          "method": "POST",
+          "backend": [
+              {
+                  "host": [ "https://api.agenda.yinflow.life" ],
+                  "url_pattern": "/v2/bookings/{bookingUid}/reschedule
+              }
+          ]
+      },
+      {
           "endpoint": "/slots/reservations",
           "method": "POST",
           "backend": [
