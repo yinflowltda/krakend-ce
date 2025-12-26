@@ -7,7 +7,7 @@
     "use_h2c": true,
     "timeout": "60s",
     "output_encoding": "json",
-    "host": [ "{{ env "DIRECTUS_BASE_URL" }}" ],
+    "host": [ {{ env "DIRECTUS_BASE_URL" | quote }} ],
     "extra_config": {
         "security/cors": {
             "allow_origins": [
@@ -32,7 +32,7 @@
             "allow_credentials": true
         }, 
         "modifier/lua-endpoint": {
-            "pre": "local c = ctx.load(); if c:headers('Authorization') ~= 'Bearer {{ env "KRAKEND_API_KEY" }}' then error('Invalid Token!') end;"
+            "pre": {{ printf "local c = ctx.load(); if c:headers('Authorization') ~= 'Bearer %s' then error('Invalid Token!') end;" (env "KRAKEND_API_KEY") | quote }}
         }
     },
     "endpoints": [
@@ -50,7 +50,7 @@
                           "request", "response"
                         ],
                         "name": "Authorization",
-                        "value": "Bearer {{ env "DIRECTUS_API_KEY" }}"
+                        "value": {{ printf "Bearer %s" (env "DIRECTUS_API_KEY") | quote }}
                       }
                     }
                   }
@@ -71,7 +71,7 @@
                           "request", "response"
                         ],
                         "name": "Authorization",
-                        "value": "Bearer {{ env "DIRECTUS_API_KEY" }}"
+                        "value": {{ printf "Bearer %s" (env "DIRECTUS_API_KEY") | quote }}
                       }
                     }
                   }
@@ -91,7 +91,7 @@
                           "request", "response"
                         ],
                         "name": "Authorization",
-                        "value": "Bearer {{ env "DIRECTUS_API_KEY" }}"
+                        "value": {{ printf "Bearer %s" (env "DIRECTUS_API_KEY") | quote }}
                       }
                     }
                   }
@@ -229,7 +229,7 @@
                           "request", "response"
                         ],
                         "name": "Authorization",
-                        "value": "Bearer {{ env "DIRECTUS_API_KEY" }}"
+                        "value": {{ printf "Bearer %s" (env "DIRECTUS_API_KEY") | quote }}
                       }
                     }
                   }
@@ -250,7 +250,7 @@
                           "request", "response"
                         ],
                         "name": "Authorization",
-                        "value": "Bearer {{ env "DIRECTUS_API_KEY" }}"
+                        "value": {{ printf "Bearer %s" (env "DIRECTUS_API_KEY") | quote }}
                       }
                     }
                   }
@@ -290,7 +290,7 @@
           "method": "POST",
           "backend": [
               {
-                  "host": [ "{{ env "YINAI_BASE_URL" }}" ],
+                  "host": [ {{ env "YINAI_BASE_URL" | quote }} ],
                   "url_pattern": "/flows/trigger/dcf15d86-3806-4bf4-8150-daffb50b698f"
               }
           ]
@@ -300,7 +300,7 @@
           "method": "POST",
           "backend": [
               {
-                  "host": [ "{{ env "YINAI_BASE_URL" }}" ],
+                  "host": [ {{ env "YINAI_BASE_URL" | quote }} ],
                   "url_pattern": "/flows/trigger/01fb4c47-f398-4c78-b466-068f2664d0cc"
               }
           ]
@@ -310,7 +310,7 @@
           "method": "POST",
           "backend": [
               {
-                  "host": [ "{{ env "YINAI_BASE_URL" }}" ],
+                  "host": [ {{ env "YINAI_BASE_URL" | quote }} ],
                   "url_pattern": "/flows/trigger/efd5f28d-de24-4b67-853e-0ff3257ae091"
               }
           ]
