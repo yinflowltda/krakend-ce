@@ -321,7 +321,19 @@
           "backend": [
               {
                   "host": [ "https://api.agenda.yinflow.life" ],
-                  "url_pattern": "/v2/bookings"
+                  "url_pattern": "/v2/bookings",
+                  "extra_config": {
+                    "modifier/martian": {
+                        "header.Append": {
+                            "scope": [
+                                "request",
+                                "response"
+                            ],
+                            "name": "apiKey",
+                            "value": "cal_f63feaae3cc8fc723f1226917933fc7c"
+                        }
+                    }
+                  }
               }
           ]
       },
@@ -331,7 +343,19 @@
           "backend": [
               {
                   "host": [ "https://api.agenda.yinflow.life" ],
-                  "url_pattern": "/v2/bookings/{bookingUid}/reschedule"
+                  "url_pattern": "/v2/bookings/{bookingUid}/reschedule",
+                  "extra_config": {
+                    "modifier/martian": {
+                        "header.Append": {
+                            "scope": [
+                                "request",
+                                "response"
+                            ],
+                            "name": "apiKey",
+                            "value": "cal_f63feaae3cc8fc723f1226917933fc7c"
+                        }
+                    }
+                  }
               }
           ]
       },
@@ -341,7 +365,19 @@
           "backend": [
               {
                   "host": [ "https://api.agenda.yinflow.life" ],
-                  "url_pattern": "/v2/slots/reservations"
+                  "url_pattern": "/v2/slots/reservations",
+                  "extra_config": {
+                    "modifier/martian": {
+                        "header.Append": {
+                            "scope": [
+                                "request",
+                                "response"
+                            ],
+                            "name": "apiKey",
+                            "value": "cal_f63feaae3cc8fc723f1226917933fc7c"
+                        }
+                    }
+                  }
               }
           ]
       }
